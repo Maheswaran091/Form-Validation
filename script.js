@@ -5,8 +5,26 @@ const password=document.querySelector('#password')
 const cpassword=document.querySelector('#cpassword')
 
 form.addEventListener('submit',(e)=>{
-    if(!Validateform()){
-        e.preventDefault() // check the form  is -> all inputs are valid
+    e.preventDefault() // check the form  is -> all inputs are valid
+    if(Validateform()){
+        const emailValue = email.value.trim();
+
+        // Check existing account
+        if (localStorage.getItem(emailValue)) {
+            alert("Email already registered");
+            return;
+        }
+
+        const user = {
+            username: username.value.trim(),
+            email: emailValue,
+            password: password.value.trim()
+        };
+
+        localStorage.setItem(emailValue, JSON.stringify(user));
+
+        alert("Registration Successful");
+        window.location.href = "Login.html";
     }
 })
 

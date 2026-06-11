@@ -8,17 +8,35 @@
 </head>
 <style>
     body{
+        width: 100vw;
+        height: 70vh;
+        display: grid;
+        align-items: center;
+        justify-content: center;
         margin: 0%;
         padding: 0%;
-        background-color: aliceblue;
+        background-color: rgba(59, 64, 70, 0.541);
     }
+    
     #containers{
-        width: 100vw;
+        width: 90vw;
         height: 100px;
         box-shadow: 2px 2px 10px 2px;
         display: flex;
         justify-content: space-around;
         align-items: center;
+        border-radius: 10px;
+    }
+    @media (max-width:600px) {
+        body{
+            display: block;
+        }
+        #containers{
+            width: 100vw;
+            transition: 2s;
+            border-radius: 0px;
+            box-shadow: 0px 0px 0px 0px;
+        }
     }
     #right{
         font-size: 30px;
@@ -35,14 +53,12 @@
         background-color: transparent;
     }
     #main{
-        display: flex;
+        display: grid;
         justify-content: center;
         align-items: center;
-        width: 100vw;
-        height: 80vh;
     }
     span{
-        font-size: 100px;
+        font-size: 12vw;
         background-image: url(christmas.jpg);
         background-clip:text;
         color: transparent;
@@ -55,12 +71,63 @@
         color: transparent;
         animation: animate 20s linear infinite;
     }
+    #fh{
+        background-clip:text;
+        color: transparent;
+        display: inline-block;
+        transform-origin: right;
+        animation: fhs 2s ease-in forwards;
+    }
+    @keyframes fhs {
+        100% {
+            transition: 2s;
+            transform: translateX(0%);
+        }
+        90% {
+            transform: rotate(20deg);
+        }
+        80% {
+            
+            transform: rotate(0deg);
+        }
+        0% {
+            transform: translateX(-200%);
+            background-position: -500px;
+        }
+    }
+    #sh{
+        background-clip:text;
+        color: transparent;
+        display: inline-block;
+        transform-origin: right;
+        animation: shs 2s ease-in backwards;
+    }
+    @keyframes shs {
+        100% {
+            transition: 2s;
+            transform: translateY(0%);
+        }
+        90% {
+            transform: rotate(20deg);
+        }
+        80% {
+            display: none;
+            transform: rotate(0deg);
+        }
+
+        0% {
+            display: none;
+            transform: translateY(200%);
+            background-position: -500px;
+        }
+    }
     @keyframes animate {
         from{
             background-position: -500px;
         }
     }
 
+    
 </style>
 <body>
     <div id="containers">
@@ -68,9 +135,8 @@
         <div id="left"><a href="Login.html"><button class="but">LogIn</button></a></div>
         <div id="left"><a href="Register.html"><button class="but">SignIn</button></a></div>
     </div>
-    <marquee loop="-1" behavior="alternate" direction="right" scrollamount="10"><h2 id="formletter">This is the Form Validation page so click the Login or Signin</h2></marquee>
+    <marquee  behavior="" direction="right" scrollamount="10"><h2 id="formletter">This is the Form Validation page so click the Login or Signin</h2></marquee>
     <div id="main">
-        <span>Happy Home</span>
-    </div>
+        <span id="m"><span id="fh">H</span><span>appy</span> <span id="sh">H</span><span>ome</span></span>
 </body>
 </html>
